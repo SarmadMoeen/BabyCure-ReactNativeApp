@@ -1,0 +1,37 @@
+import React , {useState, useEffect, Component} from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { Input, Button} from 'react-native-elements';
+
+
+export default function home({navigation}) {
+  const [font , setFont]  = useState(global);
+  const [fontColor , setFontColor]  = useState(global);
+ 
+  useEffect(()=>{
+    global.setting={
+      fs: 120,
+      fc: blue,
+      bc:'white'
+    }
+
+  })
+
+  return (
+    <View style={styles.container}>
+        <Text>Hello Testing Home</Text>
+      <Button title="Setting" style ={styles.button} onPress={()=>navigation.navigate('Setting')} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

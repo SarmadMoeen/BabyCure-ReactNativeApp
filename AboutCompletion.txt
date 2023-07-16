@@ -1,0 +1,11 @@
+main pages both 
+login 
+signup 
+Add baby
+customize diet plan
+home
+diyremedies&recipes(filter problem left)
+physical activities 
+common problems 
+Diet plan and water intake
+milestones(add function left list open)

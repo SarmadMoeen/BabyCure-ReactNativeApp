@@ -1,0 +1,79 @@
+
+import React , {useState, useEffect, Component} from 'react';
+import { StatusBar } from 'expo-status-bar';
+import {  StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { Input, Button, withTheme} from 'react-native-elements';
+import {Picker} from '@react-native-picker/picker';
+
+export default function Setting({navigation}) {
+
+
+  const [font , setFont]  = useState('');
+  
+  const [fontColor,setFontColor] = useState('');
+     
+  console.log(font);
+  console.log(fontColor);
+  useEffect(()=>{
+    global.setting={
+      fs: font,
+      fc: fontColor,
+      bc:'white'
+    }
+  })
+
+
+
+  return (
+    
+    <View style={styles.container}>
+
+      
+      
+      <Text>Hello Testing Setting</Text>
+      
+      <Picker
+          selectedValue={font}
+          style={{ height: 50, width: 250 }}
+          onValueChange={(itemValue) => setFont(itemValue)}
+        >
+          
+           // Items
+          <Picker.Item label="10" value="10" />
+          <Picker.Item label="20" value="20" />
+          <Picker.Item label="30" value="30" />
+          <Picker.Item label="40" value="40" />
+          <Picker.Item label="50" value="50" />
+          <Picker.Item label="220" value="220" />
+        </Picker>
+
+        <Picker
+          selectedValue={fontColor}
+          style={{ height: 50, width: 250 }}
+          onValueChange={(value) => setFontColor(value)}
+        >
+           // Items
+          <Picker.Item label="Yellow" value="yellow" />
+          <Picker.Item label="Blue" value="blue" />
+          <Picker.Item label="red" value="red" />
+          <Picker.Item label="Black" value="black" />
+          <Picker.Item label="Brown" value="brown" />
+          <Picker.Item label="Purple" value="purple" />
+        </Picker>
+        <Text style={{fontSize: global.setting.fs, color: global.setting.fc}}>Hello Testing Setting</Text>
+      <Button title="home" style ={styles.button} onPress={()=>navigation.navigate('home')} />
+    </View>
+
+  );
+  
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
